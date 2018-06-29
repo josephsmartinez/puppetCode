@@ -1,0 +1,188 @@
+Install Puppet and Building Virtual Machines Local StandAlone Deployment
+
+Steps:
+	1) Deployment Type  (Master-agent || StandAlone)
+	2) Persistent HostName
+	3) System Requirements
+	4) Supporting Platform
+	5) Firewall Settings
+	6) Time Sync
+
+INSTALLATION AND SET UP
+
+	Install an image that will run Puppet Server on Virtual Box
+
+		Within the settings do the following:
+			- RAM 2GB
+			- NETWORK
+				NAT
+				Advance -> Port Forwarding -> Name=ssh, HostPost=2222, GuestPort = 22
+
+		Start the VM and become root
+
+		Check shh in enabled
+		#systemctl status sshd
+
+		Check the local ip addreess
+		#ifconfig
+
+	Connect to Puppet VM via ssh
+
+	Establish a persistent host name
+
+		#uname -a
+		#hostname
+
+	Make a ip and host name mapping
+
+		#vim /etc/hosts
+
+		Example
+
+		127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
+		::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
+		10.0.2.15   puppetselfcontained.example.com
+
+	Change the host name
+
+		#hostnamectl set-hostname [enter name]
+		#hostname
+		#ping www.example.com
+
+		Note: always make sure to the connection as changes are made
+
+	Adjust Firewall settings by disabling
+
+		#systemctl status firewall
+
+		#systemctl stop firewall
+
+	Configure the repository
+
+		Visit https://puppet.com/docs/puppet/5.3/puppet_platform.html
+
+		#sudo rpm -Uvh https://yum.puppet.com/puppet5/puppet5-release-el-7.noarch.rpm
+
+		Check the installation package
+
+		#rpm -qa | grep puppet
+
+	We can check the packages shipped with the configured puppet repository
+
+		#yum list | grep -i puppet
+
+	Install puppet agent
+
+		#yum install puppet-agent
+
+		#rpm -qa | grep -i puppet
+
+	Information about the puppet package
+
+		#rpm -qi puppet-agent-5.5.3-1.el7.x86_64
+
+	Check status then start puppet server
+
+		#systemctl status puppet
+
+		#systemctl start puppet
+
+		#systemctl status puppet
+
+
+  Make sure to set the puppet command within the bash setting .bash_profile
+
+		# .bash_profile
+
+		# Get the aliases and functions
+		if [ -f ~/.bashrc ]; then
+		        . ~/.bashrc
+		fi
+
+		# User specific environment and startup programs
+
+		PATH=$PATH:/opt/puppetlabs/puppet/bin:$HOME/bin
+
+		export PATH
+
+	Restart shell or run the command below
+
+		#source .bash_profile
+
+CONFIGURING THE CLIENT AND SERVER
+
+	The config fie @ and may be different given the OS
+
+		/etc/puppetlabs/puppet/puppet.conf
+
+	The cert name in the configuration file must have a FQDN (fully qualified donmain name)
+	of the respective servers, and the server must point to the FQDN name of the puppet master.
+
+
+	Commutation between puppet agent and master happens over HTTPS which establishes SSL certificates.
+	All puppet agent must have a valid signed certificate to request anything from the puppet master.
+
+	All certificates are track @
+
+		/etc/puppetlabs/puppet/ssl/
+
+	Now it is upon puppet master to approve or deny th request. We can go to the puppet master
+	and check if the request were received or not. For this we need to use the "puppet cert" utility.
+	Here puppet cert is a dedicated utility to perform puppet cert. task.
+
+	COMMAND: puppet cert list
+			 puppet cert list --all
+			 puppet cert clean
+			 puppet cert generate
+			 puppet cert sign
+
+
+	Two ways to perform certification management
+
+		1) Manual (as shown above)
+		2) Automatic Auto-signing
+
+			This is done by creating a file named:
+
+				autosign.conf @	/etc/puppetlabs/puppet/directory
+
+			This file should contain hostname such as:
+
+				agent02.example.com  or wildcard *.company.com
+
+
+    COMMANDS:
+
+		puppet help OR puppet --help
+		puppet help resource OR puppet resource --help
+		puppet resource --types
+
+	--type as action and resources as sub-commands
+
+	create 		-> check 									-> test 							-> run
+						puppet parser validate		puppet apply --noop		puppet apply
+																							*No operation
+
+
+CODING WITHIN THE PUPPET SYNTAX -----------------------------------------------
+
+	Compiling puppet code
+
+		#puppet parser validate [file name]
+
+		Test the code with no operation flag
+		#puppet apply [file name] --noop
+
+		Run the code
+		#puppet apply [file name]
+
+	Puppet Resources
+
+	Puppet Classes
+
+		Puppet classes are a collection of resources bundled this a single unit.
+		To use a class in code, utilize the "include" keyword.
+
+	Puppet Manifest
+
+	Node Definitions
