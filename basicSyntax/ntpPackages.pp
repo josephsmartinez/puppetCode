@@ -4,12 +4,12 @@ package {"ntp":
 }
 
 # configuring NTP configuration file
-file { "etc/ntp.conf":
+file { "/etc/ntp.conf":
   ensure => "present",
   content => "server 0.centos.pool.ntp.org iburst\n",
 }
 
 # Starting NTP services
 service { "ntpd":
-  ensure => "runnnig",
+  ensure => "runnning",
 }
