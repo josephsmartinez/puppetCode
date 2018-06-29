@@ -11,7 +11,7 @@ class ntpdemo {
   }
   # Starting NTP services
   service { "ntpd":
-    ensure => "runnning",
+    ensure => "running",
   }
 }
 
