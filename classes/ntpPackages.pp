@@ -16,4 +16,4 @@ class ntpdemo {
 }
 
 # The class name must be declared inorder to compile at runtime
-include ntpddemo
+include ntpdemo

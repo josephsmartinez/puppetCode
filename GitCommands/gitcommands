@@ -1,0 +1,16 @@
+Please, commit your changes or stash them before you can merge.
+https://stackoverflow.com/questions/15745045/how-do-i-resolve-git-saying-commit-your-changes-or-stash-them-before-you-can-me
+
+Commit the change using
+git commit -m "My message"
+
+Stash it
+git stash
+git stash pop
+
+Discard the local changes
+git reset --hard
+git checkout -t -f remote/branch
+
+Or: Discard local changes for a specific file
+git checkout filename
