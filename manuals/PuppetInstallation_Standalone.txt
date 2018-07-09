@@ -126,7 +126,7 @@ CONFIGURING THE CLIENT AND SERVER
 
 		/etc/puppetlabs/puppet/ssl/
 
-	Now it is upon puppet master to approve or deny th request. We can go to the puppet master
+	Now it is upon puppet master to approve or deny the request. We can go to the puppet master
 	and check if the request were received or not. For this we need to use the "puppet cert" utility.
 	Here puppet cert is a dedicated utility to perform puppet cert. task.
 
