@@ -183,6 +183,58 @@ CODING WITHIN THE PUPPET SYNTAX -----------------------------------------------
 		Puppet classes are a collection of resources bundled this a single unit.
 		To use a class in code, utilize the "include" keyword.
 
+--------------------------------------------------------------------------------
 	Puppet Manifest
 
+		All code with .pp extension should reside within the manifest directory
+		There can be single file or multiple files within inside the manifest directory.
+
+		Find puppet default parameters
+		#puppet config print
+
+		Path to the manifest file(s)
+		/etc/puppetlabs/code/environment/production/manifest
+
+		Find the default agent connection speed
+		#puppet config print | grep -i "runinterval"
+
+		IN CASE the puppet.conf has change, reset the puppet services
+
+     site.pp is the main entry point for entire puppet network. It is the main
+		 starting point in the catalog compilation and sometimes called the
+		 "site manifest".
+
+		 Make the site.pp file, as the file is auto generated in the enterprise version
+
+		 #touch /etc/puppetlabs/code/environment/production/manifest/site.pp
+
+		 This file is used for declaring classes only*
+		 		Once the site.pp file has been created
+
+--------------------------------------------------------------------------------
+
 	Node Definitions
+
+	Defining nodes helps to process what code get executed where and provides
+	struture.
+
+	NEVER WRITE PUPPET CODE IN site.pp !!!
+	 	This file is used for node definitions and can be treated like server
+		inventory managed by the puppet master.
+
+		Code Example:
+
+			#code.pp
+
+				class ntpconfig{
+					file {"/etc/ntp.conf":
+						ensure => "present",
+						content => "server pool.ntp.org\n",
+						}
+				}
+
+			#site.pp
+
+			node "host01"{
+				include ntpconfig
+			}
