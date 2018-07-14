@@ -1,0 +1,7 @@
+
+Ruby Gems and packages
+  With puppet installed we use the #gem command to install Ruby based packages
+
+  #gem install r10k
+
+   
