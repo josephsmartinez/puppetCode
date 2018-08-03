@@ -1,0 +1,45 @@
+Managing the Master and Nodes
+
+	!!Make sure the all node and master have been configured properly!! 
+ 
+	Listing agents (On Master) 
+
+		# puppet cert list -a
+
+
+ 	Requesting certificates from the master (On Agent)
+
+		# puppet agent --test
+
+		# puppet agent -t
+
+	Signing cert request from nodes (On Master)
+
+		# puppet cert sign [ node name ]
+
+	Revoking cert (On Master)
+
+		# puppet cert revoke [ node name ]
+
+	Cleaning up SSL certs 
+
+        (On Master) 
+			
+			# puppet cert clean [ node name ]
+
+			Do NOT use this all the SSL certs will be wiped
+				
+				# puppet cert clean --all 
+
+		(On Agent)
+
+			# rm -rf /etc/puppetlabs/puppet/ssl/* 
+
+
+
+
+Resources: 
+
+RECOVERING FROM PUPPET CERT CLEAN --ALL
+http://annaken.github.io/recover-puppet-cert-clean-all
+
