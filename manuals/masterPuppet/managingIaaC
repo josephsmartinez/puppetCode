@@ -1,0 +1,83 @@
+Four approached to managing infrastructure
+
+	Lifecycle events
+
+		- build / provision
+			Tools: could/provisioner/razor/plugins
+
+		- install os
+			Tools: images
+
+    --Puppet and Chef--
+
+		- configure environment
+		- deploy app
+		- integrate
+		- update / patch
+		- audit and compliance
+	
+	--Puppet and Chef--
+
+		- tear down
+	
+	Approaches
+
+		- Manual
+		- Scripts
+		- Snape Shots
+		- IaaC 
+
+	Why IaaC
+
+		- Declartive Approach
+		- Revision Control
+		- Recreate the infrastruture out of code repo
+		- Migration and Disaster Recovery
+		- Absolute Consistency
+
+	Push Vs. Pull models
+
+		- Depends on the sistuation
+
+	Code Vs. Data
+
+		- The goal is make make code genetic and re-usable
+
+	Iterative Approach to Automation
+
+		Who is it for
+
+			- System admintrators
+			- Application ops/devops
+			- Build and release engg
+			- Network engineer
+			- Storage admin
+			- Developers 
+
+		Who it is not
+
+			- UI oriented
+			- General purpose testing tool
+			- Agent less system
+			- SCM Tool
+			- CI Tool
+			- One stop devops solution (all other tool are play a part)
+
+ 	Beyond Puppet and Chef
+
+ 		Provisioning
+
+ 			Cloudformation
+
+ 			Vagrant
+
+ 			Openstack Heat
+
+ 			Ansible
+
+ 			Terraform
+
+ 			APIs
+
+ 			Docker
+

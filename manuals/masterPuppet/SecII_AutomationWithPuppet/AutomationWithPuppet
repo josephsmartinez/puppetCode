@@ -1,0 +1,90 @@
+Path to Automation with Puppet
+
+	We always start with the end state in mind. 
+
+	Example: Web Stack
+
+	We can break the structure into layers. 
+
+	| 1 |  | 2 | load balancers
+
+	| 1 |  | 2 |  | 3 |  | 4 | web servers
+
+	| 1 |  | 2 |  | 3 | database
+
+
+	How do you go about configuring the desired state of the appliction?
+
+	| 1 |  | 2 |  | 3 |  | 4 | web servers
+
+
+	Web server 	Configurations					Puppet
+	--------------------------------------------------------
+	1 ngin ->	Install Package 			->	Package
+				Create Configuration File	-> 	File
+				Start Service				-> 	Service
+				Create Web Package 			-> 	File
+
+
+	Nginx Blueprint with Puppet
+
+	| state = installed | state = created | state = started | state = created
+
+		- version			- source		- enabled			- source
+		- lastest			- ownership							- ownership
+							- permissions						- permissions
+
+	 	PACKAGE 			CONFIG FILE 		SERVICE 			WEB PAGE
+
+	 	Modules are units of Automation, it is what you write, share, and reuse. 
+
+	 	puppet 
+	 	|
+	 	|---------Manifests
+	 	|		|
+	 	|		|--- Site.pp
+	 	|		|--- nodes.pp
+	 	|		|--- node2.pp
+	 	|
+	 	|------------Modules
+	 	            |
+	 				|--- app1
+	 				|     |--------Manifests
+	 				|	  |		|
+	 				|	  |		|--- Ressources
+	 				|	  |		|--- Ressources2
+	 				|	  |		|--- Ressources3
+	 				|	  |
+	 				|	  |---Files
+	 				|	  |  |
+	 				|	  |  |-- file1
+	 				|	  |  |-- file2
+	 				|	  |
+	 				|	  |---Template
+	 				|	     |
+	 				|	     |-- tem1
+	 				|	     |-- tem2
+	 				|
+					|--- app2
+	 				      |--------Manifests
+	 					  |		|
+	 					  |		|--- Ressources
+	 					  |		|--- Ressources2
+	 					  |		|--- Ressources3
+	 					  |
+	 					  |---Files
+	    				  |  |
+	 					  |  |-- file1
+	 					  |  |-- file2
+	 					  |
+	 					  |---Template
+	 					     |
+	 					     |-- tem1
+	 					     |-- tem2
+
+   dsl -> resources, manifests, modules
+   multi-node  -> master/agent, node def
+   dynamic configs -> params, templates, param class, defined types, inheritance
+   additional concepts -> hiera, enterprise, r10k, mcollective
+
+   https://www.centos.orghttp//schoolofdevops.slides.com/schoolofdevops/deck-45-46
