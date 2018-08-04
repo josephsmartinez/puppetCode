@@ -17,6 +17,7 @@ user { 'mike':
 	password => '$1$sRaBpvSK$zt26BUQ3OpN3CrojPpidY1', # Encrypted password format 
 	shell => '/bin/bash', 			# The users login shell
 	uid => 1001,				# User ID, automatic if not supplied 
+	managehome => true,
 }
 
 # Packages to install: 
@@ -41,16 +42,30 @@ package { 'unzip':
         ensure => 'installed',
 }
 
+# Packeage to install (option II)
+# package{['tree','wget','git','unzip','ntp']:}
+
+
 file { '/etc/motd':
 	ensure => 'present',
+	owner => 'root',
+	group => 'root',
+	mode => '0644',
 #	owner => 'mbrown',
-	content => 'Welcome to the College of Arts, Sciences, and Educatoin',
+	content => '
+
+     ##############################################################
+        Welcome to the College of Arts, Sciences, and Education
+     ##############################################################
+
+',
 }
 
 # Starting services
 
 service { 'ntpd':
 	ensure => 'running',
+	enable => true,
 }
 
 	
