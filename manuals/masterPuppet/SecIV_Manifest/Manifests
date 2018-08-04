@@ -73,5 +73,44 @@ Resource => Domain-Specific Language (DSL)
 
 Resources:
 
-Resource Type Reference (Single-Page)
-https://puppet.com/docs/puppet/5.5/type.html
+	Resource Type Reference (Single-Page)
+	https://puppet.com/docs/puppet/5.5/type.html
+
+
+Manifests Continued...
+
+	- mainfest are files which contain collection of resources
+	- written to achieve a specific objective
+	- have .pp extension
+	- resources in a manifest can be applied in any node
+
+
+Applying Puppet Manifest Locally
+
+	//Add commands
+
+Idempotence and Convergence
+
+	Work Flow
+
+		load facts -> cleans cache -> compile catalog -> converge/apply ->  report
+
+	Convergence
+
+		Puppet takes a convergent approach to configuration
+
+			- by defining the policy
+			- by comparing current state of the infrastructre
+			- bring it in-line with the policy
+			- taking action or not taking action
+			- puppet resources are idempotent (most)
+			
+
+Solution to Exercise 
+
+Execute Resource and Idempotence
+
+Lab: Creating and applying a Puppet Manifest
+
+Slides: Puppet - Manifest
+

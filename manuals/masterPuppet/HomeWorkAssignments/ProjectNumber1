@@ -1,0 +1,29 @@
+Project number one
+
+	Let us create a recipe base.pp with following resource specifications 
+
+		Create User
+
+			- Deploy
+
+		Install Packages 
+
+			- tree 
+			- wget
+			- git
+			- ntp
+			- unzip
+
+		Start Service
+
+			- ntp
+
+		Remove User
+
+			- dojo
+
+		Add file /etc/motd
+
+			- with content "Property of XYZ"
+
+
