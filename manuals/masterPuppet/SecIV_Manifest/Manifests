@@ -108,9 +108,37 @@ Idempotence and Convergence
 
 Solution to Exercise 
 
+	Please see HomeWorkAssignments/Project1
+
 Execute Resource and Idempotence
 
+	Execute (Executes external commands)
+	https://puppet.com/docs/puppet/5.5/type.html#exec
+
+	Four opptions
+
+
+
+	Idempotence
+
+	Actually no. How about we talk about it in English words? Idempotence is simply a word that describes an operation that will have the same effect whether you run it once or 10,001 times. Adding one is not idempotent because the result keeps incrementing, but multiplying by one is idempotent because the answer is the same no matter how many times you multiply it!
+
+	Every time the agent runs, it has the same set of instructions captured in a catalog. These instructions tell Puppet the state it should manage.
+
+
+	Guards -> help develope intelligence to know when to execute
+
+	only_if
+	creates
+	unless
+	refreshonly => true
+     
+    Example Scipt Please see SecIV_Manifest/sampleCode.pp
+
+
 Lab: Creating and applying a Puppet Manifest
+
+
 
 Slides: Puppet - Manifest
 
