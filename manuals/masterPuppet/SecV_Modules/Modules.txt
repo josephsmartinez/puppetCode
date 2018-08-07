@@ -196,3 +196,29 @@ Node Definition
 	  	include class 1
 		include class 2
 	}
+
+Other type of node classification
+
+	ENC and Pupppet Entperprise
+	
+	- node deinition provides a mapping detween nodes and a list
+	of classes to apply.
+
+	- node definition resides on the puppet master
+
+	- its the simplest way of classifying nodes
+
+	- there are more options avaiable for nodes classification
+
+
+Node Definition Territory
+
+	code 
+		environments
+			XXX
+				Manifests 		---------> node definition 
+					XXX.pp
+					___.pp
+					___.pp
+					___.pp
+				modules
