@@ -23,4 +23,39 @@ Generating module
 	# puppet module generate --skip-interview user-tomcat
 
 --------------------------------------------------------------------------------
+Class format example
 
+	class java::install {
+		package{["epel-release", "java-1.7.0-openjdk"]:
+			# The below can be removed, as the default is to install
+			# ensure => installed,
+		}
+	}
+
+--------------------------------------------------------------------------------
+
+Node Definition
+
+<strong>Mapping between the node and class and knows what to pull and apply.</strong>
+
+	node <--------------> list of classes
+	node 'nodename' {												---------> simple
+		include class 1	
+		include class 2
+		include class 3, class 4
+		class {'class3':
+			param1 => val1
+			param2 => val2
+			param3 => val3
+		}
+	}
+
+	node 'app1.example.io','app2.example.io', 'app3.example.io'{	---------> groups
+		include class 1    
+		include class 2
+	} 
+
+	node /^(app|web)\.bir\b+.example\.io$/ {						---------> regex
+	  	include class 1
+		include class 2
+	}
