@@ -1,0 +1,85 @@
+Manifests
+
+	--Topics--
+	Modules
+	Classes 
+	Ordering
+	Node Classification
+	Notification and Handlers
+
+Modules
+
+	- modules are the packages with manifests and supporting files
+	- have 1:1 mapping with the applications
+	- lets you create a library of reusable code
+
+	Each modules contains (Example)
+
+		manifest
+			- core component
+
+		files
+			- configurations 
+		
+		templates
+			- more configurations
+
+		data
+			- data for the application 
+		
+		spec 
+			- Unit testing (RSPEC)
+		
+		example 
+			- Documentation on using the modules
+
+		metadata.json
+			- Information about who has written this module and goes inside
+
+		README.md
+		
+Module Path
+
+	- Modules are stored on Pupppet Master
+	- Pupper Master has a code dir to store modules and rest of the configurations
+	- The default code dir needs to change in case want to point to a custome path.
+
+		# vim /etc/pupppetlabs/puppetserver/conf.d/puppetserver.conf
+
+		# service puppetserver restart
+
+	master-code-dir: /etc/puppetlabs/code
+					|
+					|
+	master-code-dir: /workspace/code  (Online course)
+
+	NOTE! For the online course there need to be come configuration changes within the IDE.
+		  Pease referance the Section 5, Lecture 30 7:00m
+
+
+Generating Modules
+
+	Problem Statement
+
+		- You have been asked to deploy a java application server with tomcat. You have been task to crate automation code with puppet to set it up. 
+
+	Solution
+
+		- We would create a module to setup tomcat server and apply it to automante the task.
+		- As a prerequisite, we also need to install Java. We will crate a module to install openJDK.
+
+	Task 
+
+	1) Generate modules for java and tomcat
+	2) Create class to install java
+	3) Crate node definition to apply to classes
+	4) Create classes to install tomcat and start the service, applied
+	5) Write classes to manage configuration file
+
+
+Auto gerenrateing modules
+
+	- puppet module is a utility which comes with code generator
+	- You can create, search, install, upload, modules (to and from the pupper forge)
+
+

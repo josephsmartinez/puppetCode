@@ -45,4 +45,46 @@ Four approached to managing infrastructure
 
 	Iterative Approach to Automation
 
-		- 
+		Who is it for
+
+			- System admintrators
+			- Application ops/devops
+			- Build and release engg
+			- Network engineer
+			- Storage admin
+			- Developers 
+
+		Who it is not
+
+			- UI oriented
+			- General purpose testing tool
+			- Agent less system
+			- SCM Tool
+			- CI Tool
+			- One stop devops solution (all other tool are play a part)
+
+ 	Beyond Puppet and Chef
+
+ 		Provisioning
+
+ 			Cloudformation
+
+ 			Vagrant
+
+ 			Openstack Heat
+
+ 			Ansible
+
+ 			Terraform
+
+ 			APIs
+
+ 			Docker
+
+ 			Kubernetes
+
+ 			Container 
+
+ 			Container orchestration
+
+ 			
