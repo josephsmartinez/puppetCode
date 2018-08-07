@@ -83,3 +83,34 @@ Auto gerenrateing modules
 	- You can create, search, install, upload, modules (to and from the pupper forge)
 
 
+	-> Writing Manifest	
+
+	By default the auto generate will create a file structure like so, 
+
+	modules 						- Puppet module generator creates the 
+									  scaffolding required to write manifests
+		tomcat
+									- Also generate the default manifest (init.pp)
+			Manifests 				 
+									- Additional manifest can be added
+				init 				  to modules/XXX/manifest dir
+
+				???
+
+				???
+
+	-> Classes 
+
+		Each manifest contains a class, a named container, which encompasses on or more resources.
+
+		'::' is added to class names to separate the namespaces
+
+		modules
+
+			tomcat
+
+				manifest
+
+					init.pp
+
+					abc.pp  ------> class tomcat::abc 
