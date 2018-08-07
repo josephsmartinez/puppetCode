@@ -114,3 +114,85 @@ Auto gerenrateing modules
 					init.pp
 
 					abc.pp  ------> class tomcat::abc 
+
+					xyz.pp -------> class tomcat::xyz
+
+					subdir
+
+						pqr.pp -------> class tomcat::subdir::pqr
+
+Strategies when creating Class and Manifest 
+
+	Every feature get its own class, and in turn a manifest.
+
+	Create a separate classes for each phases of application lifecycle. This provide more granular control.
+
+	modules
+
+			tomcat
+
+				manifest
+
+					init.pp
+
+					deploy.pp
+
+					ssl.pp
+
+					install.pp
+
+					config.pp
+
+					service.pp
+
+	TOMCAT Example 
+
+		phases										classes
+
+		- install packeages to setup 	------>		tomcat::install
+		  web server application and
+		  pre-requisites.
+
+		- manage configurations for		------>		tomcat::config
+		  web servers
+
+		- start/stop service 			------>		tomcat::service
+
+	JAVA Example 
+
+		phases										classes
+
+			- install packeages to setup 	------>		java::install
+		  	  openJDK
+
+
+Node Definition
+
+	Mapping between the node and class and knows what to pull and apply.
+
+	node <--------------> list of classes
+
+
+	node 'nodename' {												---------> simple
+
+		include class 1	
+		include class 2
+		include class 3, class 4
+
+		class {'class3':
+
+			param1 => val1
+			param2 => val2
+			param3 => val3
+		}
+	}
+
+	node 'app1.example.io','app2.example.io', 'app3.example.io'{	---------> groups
+		include class 1    
+		include class 2
+	} 
+
+	node /^(app|web)\.bir\b+.example\.io$/ {						---------> regex
+	  	include class 1
+		include class 2
+	}

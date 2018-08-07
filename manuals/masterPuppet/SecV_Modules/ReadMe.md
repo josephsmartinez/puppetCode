@@ -20,7 +20,7 @@ Generating module
 
 	# puppet module generate user-java
 
-	#puppet module generate --skip-interview user-tomcat
+	# puppet module generate --skip-interview user-tomcat
 
 --------------------------------------------------------------------------------
 
