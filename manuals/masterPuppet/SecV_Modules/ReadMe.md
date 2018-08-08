@@ -22,6 +22,14 @@ Generating module
 
 	# puppet module generate --skip-interview user-tomcat
 
+
+NOTE!
+
+Warning: `puppet module generate` is deprecated and will be removed in a future release. This action has been replaced by Puppet Development Kit. For more information visit
+
+	https://puppet.com/docs/pdk/1.x/pdk.html
+
+
 --------------------------------------------------------------------------------
 Class format example
 
@@ -59,3 +67,14 @@ Node Definition
 	  	include class 1
 		include class 2
 	}
+
+
+Example of the node declaring
+
+		node 'node1' {
+		
+		include java::install
+
+	}
+
+--------------------------------------------------------------------------------

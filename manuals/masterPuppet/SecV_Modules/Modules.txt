@@ -218,7 +218,22 @@ Node Definition Territory
 			XXX
 				Manifests 		---------> node definition 
 					XXX.pp
+					webserver.pp
+					database.pp
 					___.pp
-					___.pp
-					___.pp
-				modules
+				modules    		---------> class definition 
+					tomcat
+						manifest
+							init.pp
+							deploy.pp
+							ssl.pp
+							install.pp
+							config.pp
+							service.pp
+
+
+Example of Node
+
+	node 'node1' {
+		include java::install
+	}
