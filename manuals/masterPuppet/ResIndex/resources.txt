@@ -1,0 +1,8 @@
+The following are the types of resources that can be applied to nodes, classes,
+and resource files.
+
+
+notify
+https://puppet.com/docs/puppet/5.5/type.html#notify-attribute-message
+
+message  Sends an arbitrary message to the agent run-time log.

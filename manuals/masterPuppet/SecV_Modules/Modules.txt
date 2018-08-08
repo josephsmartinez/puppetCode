@@ -2,7 +2,7 @@ Manifests
 
 	--Topics--
 	Modules
-	Classes 
+	Classes
 	Ordering
 	Node Classification
 	Notification and Handlers
@@ -19,29 +19,29 @@ Modules
 			- core component
 
 		files
-			- configurations 
-		
+			- configurations
+
 		templates
 			- more configurations
 
 		data
-			- data for the application 
-		
-		spec 
+			- data for the application
+
+		spec
 			- Unit testing (RSPEC)
-		
-		example 
+
+		example
 			- Documentation on using the modules
 
 		metadata.json
 			- Information about who has written this module and goes inside
 
 		README.md
-		
+
 Module Path
 
-	- Modules are stored on Pupppet Master
-	- Pupper Master has a code dir to store modules and rest of the configurations
+	- Modules are stored on Puppet Master
+	- Puppet Master has a code dir to store modules and rest of the configurations
 	- The default code dir needs to change in case want to point to a custome path.
 
 		# vim /etc/pupppetlabs/puppetserver/conf.d/puppetserver.conf
@@ -54,21 +54,21 @@ Module Path
 	master-code-dir: /workspace/code  (Online course)
 
 	NOTE! For the online course there need to be come configuration changes within the IDE.
-		  Pease referance the Section 5, Lecture 30 7:00m
+		  Pease reference the Section 5, Lecture 30 7:00m
 
 
 Generating Modules
 
 	Problem Statement
 
-		- You have been asked to deploy a java application server with tomcat. You have been task to crate automation code with puppet to set it up. 
+		- You have been asked to deploy a java application server with tomcat. You have been task to crate automation code with puppet to set it up.
 
 	Solution
 
 		- We would create a module to setup tomcat server and apply it to automante the task.
 		- As a prerequisite, we also need to install Java. We will crate a module to install openJDK.
 
-	Task 
+	Task
 
 	1) Generate modules for java and tomcat
 	2) Create class to install java
@@ -77,21 +77,21 @@ Generating Modules
 	5) Write classes to manage configuration file
 
 
-Auto gerenrateing modules
+Auto generating modules
 
 	- puppet module is a utility which comes with code generator
-	- You can create, search, install, upload, modules (to and from the pupper forge)
+	- You can create, search, install, upload, modules (to and from the puppet forge)
 
 
-	-> Writing Manifest	
+	-> Writing Manifest
 
-	By default the auto generate will create a file structure like so, 
+	By default the auto generate will create a file structure like so,
 
-	modules 						- Puppet module generator creates the 
+	modules 						- Puppet module generator creates the
 									  scaffolding required to write manifests
 		tomcat
 									- Also generate the default manifest (init.pp)
-			Manifests 				 
+			Manifests
 									- Additional manifest can be added
 				init 				  to modules/XXX/manifest dir
 
@@ -99,7 +99,7 @@ Auto gerenrateing modules
 
 				???
 
-	-> Classes 
+	-> Classes
 
 		Each manifest contains a class, a named container, which encompasses on or more resources.
 
@@ -113,7 +113,7 @@ Auto gerenrateing modules
 
 					init.pp
 
-					abc.pp  ------> class tomcat::abc 
+					abc.pp  ------> class tomcat::abc
 
 					xyz.pp -------> class tomcat::xyz
 
@@ -121,7 +121,7 @@ Auto gerenrateing modules
 
 						pqr.pp -------> class tomcat::subdir::pqr
 
-Strategies when creating Class and Manifest 
+Strategies when creating Class and Manifest
 
 	Every feature get its own class, and in turn a manifest.
 
@@ -145,11 +145,11 @@ Strategies when creating Class and Manifest
 
 					service.pp
 
-	TOMCAT Example 
+	TOMCAT Example
 
 		phases										classes
 
-		- install packeages to setup 	------>		tomcat::install
+		- install packages to setup 	------>		tomcat::install
 		  web server application and
 		  pre-requisites.
 
@@ -158,7 +158,7 @@ Strategies when creating Class and Manifest
 
 		- start/stop service 			------>		tomcat::service
 
-	JAVA Example 
+	JAVA Example
 
 		phases										classes
 
@@ -175,7 +175,7 @@ Node Definition
 
 	node 'nodename' {												---------> simple
 
-		include class 1	
+		include class 1
 		include class 2
 		include class 3, class 4
 
@@ -188,9 +188,9 @@ Node Definition
 	}
 
 	node 'app1.example.io','app2.example.io', 'app3.example.io'{	---------> groups
-		include class 1    
+		include class 1
 		include class 2
-	} 
+	}
 
 	node /^(app|web)\.bir\b+.example\.io$/ {						---------> regex
 	  	include class 1
@@ -199,29 +199,29 @@ Node Definition
 
 Other type of node classification
 
-	ENC and Pupppet Entperprise
-	
-	- node deinition provides a mapping detween nodes and a list
+	ENC and Puppet Enterprise
+
+	- node definition provides a mapping between nodes and a list
 	of classes to apply.
 
 	- node definition resides on the puppet master
 
 	- its the simplest way of classifying nodes
 
-	- there are more options avaiable for nodes classification
+	- there are more options available for nodes classification
 
 
 Node Definition Territory
 
-	code 
+	code
 		environments
 			XXX
-				Manifests 		---------> node definition 
+				Manifests 		---------> node definition
 					XXX.pp
 					webserver.pp
 					database.pp
 					___.pp
-				modules    		---------> class definition 
+				modules    		---------> class definition
 					tomcat
 						manifest
 							init.pp
@@ -237,3 +237,16 @@ Example of Node
 	node 'node1' {
 		include java::install
 	}
+
+Using Default Block, Adding Checkpoints with Notify Resource, Classification
+
+	Nodes will check with master to pull it's own defined catalog
+
+	  	1) First it will check for it's full application name ie. app.nodeName.io
+			2) If not found it will check -> app.nodeName
+			3) and so no -> app
+			4) if no catalog is found, then it will 'default'
+
+			Default Block
+
+Ordering, Notifications and Meta Parameters
