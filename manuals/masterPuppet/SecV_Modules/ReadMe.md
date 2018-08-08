@@ -1,4 +1,4 @@
- 
+
 <h1>Modules</h1><br>
 <ol>
 	<li>Anatomoy of a Module and Modulepath Configurations</li>
@@ -40,6 +40,7 @@ Class format example
 		}
 	}
 
+
 --------------------------------------------------------------------------------
 
 Node Definition
@@ -48,7 +49,7 @@ Node Definition
 
 	node <--------------> list of classes
 	node 'nodename' {												---------> simple
-		include class 1	
+		include class 1
 		include class 2
 		include class 3, class 4
 		class {'class3':
@@ -61,7 +62,7 @@ Node Definition
 	node 'app1.example.io','app2.example.io', 'app3.example.io'{	---------> groups
 		include class 1    
 		include class 2
-	} 
+	}
 
 	node /^(app|web)\.bir\b+.example\.io$/ {						---------> regex
 	  	include class 1
@@ -72,7 +73,7 @@ Node Definition
 Example of the node declaring
 
 		node 'node1' {
-		
+
 		include java::install
 
 	}
