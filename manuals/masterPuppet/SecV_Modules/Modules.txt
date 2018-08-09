@@ -315,3 +315,7 @@ Ordering, Notifications and Meta Parameters
 						require => [ Package["nginx"], File["nginx.conf"] ];
 						subscribe => File["nginx.conf"]
 					}
+
+Using init.pp, Defining Dependencies
+
+	- We included java cookbook in tomcat init.pp

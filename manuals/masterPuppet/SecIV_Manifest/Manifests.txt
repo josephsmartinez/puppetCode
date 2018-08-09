@@ -10,8 +10,8 @@ Manifests
 
 Resource => Domain-Specific Language (DSL)
 
-	Puppet translates these "resource" into "providers" which 
-	are platform specific procedures 
+	Puppet translates these "resource" into "providers" which
+	are platform specific procedures
 
 	package
 	->	yum
@@ -37,38 +37,38 @@ Resource => Domain-Specific Language (DSL)
 		  allowdupe            => # Whether to allow duplicate UIDs. Defaults to...
 		  attribute_membership => # Whether specified attribute value pairs should...
 		  attributes           => # Specify AIX attributes for the user in an array...
-		  auth_membership      => # Whether specified auths should be considered the 
+		  auth_membership      => # Whether specified auths should be considered the
 		  auths                => # The auths the user has.  Multiple auths should...
-		  comment              => # A description of the user.  Generally the user's 
-		  expiry               => # The expiry date for this user. Provide as either 
+		  comment              => # A description of the user.  Generally the user's
+		  expiry               => # The expiry date for this user. Provide as either
 		  forcelocal           => # Forces the management of local accounts when...
 		  gid                  => # The user's primary group.  Can be specified...
 		  groups               => # The groups to which the user belongs.  The...
 		  home                 => # The home directory of the user.  The directory...
-		  ia_load_module       => # The name of the I&A module to use to manage this 
+		  ia_load_module       => # The name of the I&A module to use to manage this
 		  iterations           => # This is the number of iterations of a chained...
 		  key_membership       => # Whether specified key/value pairs should be...
 		  keys                 => # Specify user attributes in an array of key ...
 		  loginclass           => # The name of login class to which the user...
-		  managehome           => # Whether to manage the home directory when Puppet 
+		  managehome           => # Whether to manage the home directory when Puppet
 		  membership           => # If `minimum` is specified, Puppet will ensure...
 		  password             => # The user's password, in whatever encrypted...
 		  password_max_age     => # The maximum number of days a password may be...
 		  password_min_age     => # The minimum number of days a password must be...
-		  password_warn_days   => # The number of days before a password is going to 
-		  profile_membership   => # Whether specified roles should be treated as the 
+		  password_warn_days   => # The number of days before a password is going to
+		  profile_membership   => # Whether specified roles should be treated as the
 		  profiles             => # The profiles the user has.  Multiple profiles...
-		  project              => # The name of the project associated with a user.  
+		  project              => # The name of the project associated with a user.
 		  provider             => # The specific backend to use for this `user...
 		  purge_ssh_keys       => # Whether to purge authorized SSH keys for this...
-		  role_membership      => # Whether specified roles should be considered the 
+		  role_membership      => # Whether specified roles should be considered the
 		  roles                => # The roles the user has.  Multiple roles should...
 		  salt                 => # This is the 32-byte salt used to generate the...
 		  shell                => # The user's login shell.  The shell must exist...
 		  system               => # Whether the user is a system user, according to...
 		  uid                  => # The user ID; must be specified numerically. If...
 		  # ...plus any applicable metaparameters.
-}		
+}
 
 
 Resources:
@@ -79,7 +79,7 @@ Resources:
 
 Manifests Continued...
 
-	- mainfest are files which contain collection of resources
+	- manifest are files which contain collection of resources
 	- written to achieve a specific objective
 	- have .pp extension
 	- resources in a manifest can be applied in any node
@@ -100,24 +100,22 @@ Idempotence and Convergence
 		Puppet takes a convergent approach to configuration
 
 			- by defining the policy
-			- by comparing current state of the infrastructre
+			- by comparing current state of the infrastructure
 			- bring it in-line with the policy
 			- taking action or not taking action
 			- puppet resources are idempotent (most)
-			
 
-Solution to Exercise 
 
-	Please see HomeWorkAssignments/Project1
+Solution to Exercise
+
+	Please see LabExercise/Project1
 
 Execute Resource and Idempotence
 
 	Execute (Executes external commands)
 	https://puppet.com/docs/puppet/5.5/type.html#exec
 
-	Four opptions
-
-
+	Four options
 
 	Idempotence
 
@@ -126,13 +124,13 @@ Execute Resource and Idempotence
 	Every time the agent runs, it has the same set of instructions captured in a catalog. These instructions tell Puppet the state it should manage.
 
 
-	Guards -> help develope intelligence to know when to execute
+	Guards -> help develop intelligence to know when to execute
 
 	only_if
 	creates
 	unless
 	refreshonly => true
-     
+
     Example Scipt Please see SecIV_Manifest/sampleCode.pp
 
 
@@ -141,4 +139,3 @@ Lab: Creating and applying a Puppet Manifest
 
 
 Slides: Puppet - Manifest
-
