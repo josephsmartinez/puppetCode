@@ -23,5 +23,10 @@ service { 'nginx':
   # pattern => 'nginx',
 }
 
-# Order of operations
-Package["nginx"] -> File["nginx.conf"] -> Service["nginx"]
+# Order notation ie Short hand version of the above
+Package["nginx"] -> File["nginx.conf"] ~> Service["nginx"]
+
+# or
+Package["nginx"] ->
+File["nginx.conf"] ~>
+Service["nginx"]

@@ -79,3 +79,6 @@ Example of the node declaring
 	}
 
 --------------------------------------------------------------------------------
+Meta Parameters
+
+	# puppet describe -sm package

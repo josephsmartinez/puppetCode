@@ -250,3 +250,68 @@ Using Default Block, Adding Checkpoints with Notify Resource, Classification
 			Default Block
 
 Ordering, Notifications and Meta Parameters
+
+	Parameters of resources: before, require, notify, subscribe
+
+
+		Using before and require
+
+		Puppet executes in parallel and does not compile base on ordering
+		For this we need: before & require
+
+		package  ->  service
+		  A						 B
+	  before B			require A			Both are not needed, depends in the situation
+
+		Example:
+
+					package {"nginx:
+						before => Service["nginx"],
+					"}
+					service {"nginx":
+						require => Package["nginx"],
+					}
+
+		Using notify and subscribe
+
+		There are case were config file may change, which in turn will require the
+		service to be restarted.
+
+		file		~>	 service
+		 C						D
+		notify D		subscribe C
+
+		Example:
+
+					package {"nginx":
+						before 			=> Service["nginx"],
+					}
+
+					 file{"nginx".conf:
+					 		notify 		=> Service["nginx"],
+					 }
+
+					service {"nginx":
+						require		 	=> [ Package["nginx"], File["nginx.conf"] ];
+						subscribe 	=> File["nginx.conf"]
+					}
+
+					We can also define the ordering in short-hand notation
+
+					Package["nginx"] -> File["nginx.conf"] ~> Service["nginx"]
+
+		Define data types:  Type['title']
+
+			Once you declare a package, file, service, etc. data type, all
+			other references are capitals Package, File, Service, etc.
+
+					package {"nginx":
+						before => Service["nginx"],
+					}
+					file{"nginx".conf:
+							notify => Service["nginx"],
+					}
+					service {"nginx":
+						require => [ Package["nginx"], File["nginx.conf"] ];
+						subscribe => File["nginx.conf"]
+					}
