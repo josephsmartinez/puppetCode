@@ -11,10 +11,10 @@ exec{ 'download_facebooc_from_source':
 	notify 		=> Exce['extract_facebook_app']
 }
 
-# If the file is downloaded ^ the following script will run 
+# If the file is downloaded ^ the following script will run
 exec { 'extract_facebook_app':
-	
-	command		=> 'unzip master.zip && touch /opt/.facebook_compile', 
+
+	command		=> 'unzip master.zip && touch /opt/.facebook_compile',
 	path 		=> '/usr/bin:/usr/sbin:/user/local/bin',
 	refreshonly => true,
 	cwd 		=> /opt,
@@ -32,7 +32,7 @@ exec { 'compile_facebooc':
 	onlyif 		=> 'rest -f /opt/.facebook_compile',
 }
 
-exec { 'run_facebook': 
+exec { 'run_facebook':
 
 	command		=> 'bin/facebook 16000 &',
 	path 		=> '/usr/bin:/usr/sbin:/user/local/bin:/opt/facebook-master',

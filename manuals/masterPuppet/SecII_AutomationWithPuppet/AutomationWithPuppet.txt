@@ -1,10 +1,10 @@
 Path to Automation with Puppet
 
-	We always start with the end state in mind. 
+	We always start with the end state in mind.
 
 	Example: Web Stack
 
-	We can break the structure into layers. 
+	We can break the structure into layers.
 
 	| 1 |  | 2 | load balancers
 
@@ -13,14 +13,14 @@ Path to Automation with Puppet
 	| 1 |  | 2 |  | 3 | database
 
 
-	How do you go about configuring the desired state of the appliction?
+	How do you go about configuring the desired state of the application?
 
 	| 1 |  | 2 |  | 3 |  | 4 | web servers
 
 
 	Web server 	Configurations					Puppet
 	--------------------------------------------------------
-	1 ngin ->	Install Package 			->	Package
+	1 nginx ->	Install Package 			->	Package
 				Create Configuration File	-> 	File
 				Start Service				-> 	Service
 				Create Web Package 			-> 	File
@@ -36,9 +36,9 @@ Path to Automation with Puppet
 
 	 	PACKAGE 			CONFIG FILE 		SERVICE 			WEB PAGE
 
-	 	Modules are units of Automation, it is what you write, share, and reuse. 
+	 	Modules are units of Automation, it is what you write, share, and reuse.
 
-	 	puppet 
+	 	puppet
 	 	|
 	 	|---------Manifests
 	 	|		|
@@ -48,39 +48,39 @@ Path to Automation with Puppet
 	 	|
 	 	|------------Modules
 	 	            |
-	 				|--- app1
-	 				|     |--------Manifests
-	 				|	  |		|
-	 				|	  |		|--- Ressources
-	 				|	  |		|--- Ressources2
-	 				|	  |		|--- Ressources3
-	 				|	  |
-	 				|	  |---Files
-	 				|	  |  |
-	 				|	  |  |-- file1
-	 				|	  |  |-- file2
-	 				|	  |
-	 				|	  |---Template
-	 				|	     |
-	 				|	     |-- tem1
-	 				|	     |-- tem2
-	 				|
-					|--- app2
-	 				      |--------Manifests
-	 					  |		|
-	 					  |		|--- Ressources
-	 					  |		|--- Ressources2
-	 					  |		|--- Ressources3
-	 					  |
-	 					  |---Files
-	    				  |  |
-	 					  |  |-- file1
-	 					  |  |-- file2
-	 					  |
-	 					  |---Template
-	 					     |
-	 					     |-- tem1
-	 					     |-- tem2
+				 				|--- app1
+				 				|     |--------Manifests
+				 				|	    |		|
+				 				|	    |		|--- Resources
+				 				|	    |		|--- Ressources2
+				 				|	    |		|--- Ressources3
+				 				|	    |
+				 				|	    |---Files
+				 				|	    |  |
+				 				|	    |  |-- file1
+				 				|	    |  |-- file2
+				 				|	    |
+				 				|	    |---Template
+				 				|	    |
+				 				|	    |-- tem1
+				 				|	    |-- tem2
+				 				|
+								|--- app2
+ 				        |--------Manifests
+		 					  |		|
+		 					  |		|--- Ressources
+		 					  |		|--- Ressources2
+		 					  |		|--- Ressources3
+		 					  |
+		 					  |---Files
+		    			  |  |
+		 					  |  |-- file1
+		 					  |  |-- file2
+		 					  |
+		 					  |---Template
+		 					     |
+		 					     |-- tem1
+		 					     |-- tem2
 
    dsl -> resources, manifests, modules
    multi-node  -> master/agent, node def
